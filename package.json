@@ -12,6 +12,7 @@
     "7": "tsx --env-file=.env 07*",
     "8": "tsx --env-file=.env 08*",
     "9": "tsx --env-file=.env 09*",
+    "10": "tsx --env-file=.env 10*",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
