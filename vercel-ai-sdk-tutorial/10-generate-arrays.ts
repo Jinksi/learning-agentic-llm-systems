@@ -9,7 +9,7 @@ const lmstudio = createOpenAICompatible({
 })
 
 // Empty string defaults to the model selected in lmstudio
-const model = lmstudio('')
+const model = lmstudio('qwen2.5-7b-instruct') // Providing a model name will auto-load the model
 // const model = anthropic('claude-3-5-haiku-latest')
 
 const schema = z.object({

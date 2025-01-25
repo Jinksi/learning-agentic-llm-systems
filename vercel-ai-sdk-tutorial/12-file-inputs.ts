@@ -1,9 +1,11 @@
 import { anthropic } from '@ai-sdk/anthropic'
+// import { openai } from '@ai-sdk/openai'
 import { generateObject } from 'ai'
 import { readFileSync } from 'fs'
 import { z } from 'zod'
 
 const model = anthropic('claude-3-5-sonnet-latest')
+// const model = openai('gpt-4o') – PDF not supported
 
 // Lots of descriptions to really help the LLM figure it out
 const schema = z
@@ -41,6 +43,10 @@ export const extractDataFromInvoice = async (invoicePath: string) => {
   return object
 }
 
-console.log(await extractDataFromInvoice('./images/invoice-1.pdf'))
+console.log(
+  await extractDataFromInvoice('./vercel-ai-sdk-tutorial/images/invoice-1.pdf')
+)
 
-console.log(await extractDataFromInvoice('./images/invoice-2.pdf'))
+console.log(
+  await extractDataFromInvoice('./vercel-ai-sdk-tutorial/images/invoice-2.pdf')
+)

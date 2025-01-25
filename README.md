@@ -1,4 +1,7 @@
-Working code for workshop: [Vercel AI SDK Tutorial](https://www.aihero.dev/vercel-ai-sdk-tutorial).
+Working code for learning agentic LLM system development, including:
+
+- [Vercel AI SDK Tutorial](https://www.aihero.dev/vercel-ai-sdk-tutorial)
+- [Building effective agents \ Anthropic](https://www.anthropic.com/research/building-effective-agents)
 
 For OpenAI, Anthropic, etc, add API keys to `.env`.
 

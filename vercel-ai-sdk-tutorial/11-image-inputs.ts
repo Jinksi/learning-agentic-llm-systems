@@ -1,8 +1,10 @@
 import { anthropic } from '@ai-sdk/anthropic'
+import { openai } from '@ai-sdk/openai'
 import { generateText } from 'ai'
 import { readFileSync } from 'fs'
 
-const model = anthropic('claude-3-5-sonnet-latest')
+// const model = anthropic('claude-3-5-sonnet-latest')
+const model = openai('gpt-4o-mini')
 
 const systemPrompt =
   `You will receive an image. ` +
@@ -46,7 +48,9 @@ export const describeImage = async (imagePath?: string, imageUrl?: string) => {
 }
 
 // Image from local file
-console.log(await describeImage('./images/hows-the-water.jpg'))
+console.log(
+  await describeImage('./vercel-ai-sdk-tutorial/images/hows-the-water.jpg')
+)
 
 // claude-3-5-sonnet-latest
 // Comic showing two penguins: one jumping into water asks "how's the water?" while another floats in a colorful inner tube responds "cold" then "really cold" after the first penguin enters.

@@ -7,7 +7,7 @@ const lmstudio = createOpenAICompatible({
 })
 
 const model = lmstudio.textEmbeddingModel(
-  'text-embedding-nomic-embed-text-v1.5'
+  'text-embedding-nomic-embed-text-v1.5' // Providing a model name will auto-load the model
 )
 
 const values = ['Mars', 'Pineapple', 'Eucalyptus', 'Opinion']
