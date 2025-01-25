@@ -1,5 +1,6 @@
 import { createOpenAICompatible } from '@ai-sdk/openai-compatible'
 import { anthropic } from '@ai-sdk/anthropic'
+import { openai } from '@ai-sdk/openai'
 import { generateText, tool } from 'ai'
 import { z } from 'zod'
 
@@ -10,6 +11,7 @@ const lmstudio = createOpenAICompatible({
 
 const model = lmstudio('')
 // const model = anthropic('claude-3-5-haiku-latest')
+// const model = openai('gpt-4o-mini')
 
 const maxPosts = 5
 
@@ -20,7 +22,7 @@ const getTopHackerNewsPostTool = tool({
       .number()
       .optional()
       .describe(
-        'The optional number of posts to retrieve. Defaults to 1. Maximum 5.'
+        `The optional number of posts to retrieve. Defaults to 1. Maximum ${maxPosts}.`
       ),
   }),
   execute: async ({ numberOfPosts = 1 }) => {
@@ -65,7 +67,8 @@ const getTopHnPost = async (prompt: string = '') => {
     prompt,
     system:
       `Your only role in life is to fetch the top Hacker News post for a user. ` +
-      `Use the tool provided to get it and return any relevant details, the comments URL in particular.`,
+      `Use the tool provided to get it and return any relevant details, the comments URL in particular. ` +
+      `If the user asks for more than ${maxPosts} posts, return the top ${maxPosts} ONLY.`,
     tools: {
       getTopHackerNewsPostTool,
     },
