@@ -19,7 +19,7 @@
     "14": "tsx --env-file=.env vercel-ai-sdk-tutorial/14*",
     "15": "tsx --env-file=.env vercel-ai-sdk-tutorial/15*",
     "eval": "evalite",
-    "test": "npm run eval"
+    "test": "vitest --ui --standalone"
   },
   "keywords": [],
   "author": "",
@@ -37,6 +37,7 @@
   },
   "devDependencies": {
     "@types/node": "^22.10.10",
+    "@vitest/ui": "^3.0.4",
     "dotenv": "^16.4.7",
     "evalite": "^0.8.2",
     "tsx": "^4.19.2",
