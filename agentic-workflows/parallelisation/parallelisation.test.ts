@@ -81,8 +81,10 @@ test.each(Object.keys(testProducts))(
     )
 
     for (const violation of testProduct.expectedViolations) {
+      // Check that, at least the expected violations are reported.
+      // More can be reported, but at least the expected ones must be.
       expect(violationsReported).toContain(violation)
     }
   },
-  30_000
-) // Running locally takes a while.
+  30_000 // Running locally takes a while.
+)
