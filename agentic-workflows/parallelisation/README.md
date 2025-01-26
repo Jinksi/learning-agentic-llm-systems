@@ -1,6 +1,6 @@
 ## Workflow: Parallelisation
 
-This example uses a "Sectioning" workflow, a given product description is checked against multiple criteria in parallel. Keeping each criteria check separate allows for more focused attention on each specific aspect, reducing the likelihood of a single LLM call being overwhelmed and hallucinating.
+This example uses a parallelisation workflow: a given product description is checked against multiple criteria in parallel. Keeping each criteria check separate allows for more focused attention on each specific aspect, reducing the likelihood of a single LLM call being overwhelmed and hallucinating.
 
 `npm run test parallelisation`
 
@@ -8,7 +8,7 @@ This example uses a "Sectioning" workflow, a given product description is checke
 
 ## About parallelisation workflows
 
-_See [Building effective agents \ Anthropic](https://www.anthropic.com/research/building-effective-agents)_
+_Sourced from [Building effective agents \ Anthropic](https://www.anthropic.com/research/building-effective-agents)_
 
 LLMs can sometimes work simultaneously on a task and have their outputs aggregated programmatically. This workflow, parallelisation, manifests in two key variations:
 
