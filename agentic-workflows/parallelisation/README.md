@@ -1,4 +1,4 @@
-## Workflow: Parallelization
+## Workflow: Parallelisation
 
 This example uses a "Sectioning" workflow, a given product description is checked against multiple criteria in parallel. Keeping each criteria check separate allows for more focused attention on each specific aspect, reducing the likelihood of a single LLM call being overwhelmed and hallucinating.
 
@@ -10,7 +10,7 @@ This example uses a "Sectioning" workflow, a given product description is checke
 
 _See [Building effective agents \ Anthropic](https://www.anthropic.com/research/building-effective-agents)_
 
-LLMs can sometimes work simultaneously on a task and have their outputs aggregated programmatically. This workflow, parallelization, manifests in two key variations:
+LLMs can sometimes work simultaneously on a task and have their outputs aggregated programmatically. This workflow, parallelisation, manifests in two key variations:
 
 - **Sectioning**: Breaking a task into independent subtasks run in parallel.
 - **Voting**: Running the same task multiple times to get diverse outputs.
@@ -19,9 +19,9 @@ LLMs can sometimes work simultaneously on a task and have their outputs aggregat
 
 **When to use this workflow**
 
-Parallelization is effective when the divided subtasks can be parallelized for speed, or when multiple perspectives or attempts are needed for higher confidence results. For complex tasks with multiple considerations, LLMs generally perform better when each consideration is handled by a separate LLM call, allowing focused attention on each specific aspect.
+Parallelisation is effective when the divided subtasks can be parallelised for speed, or when multiple perspectives or attempts are needed for higher confidence results. For complex tasks with multiple considerations, LLMs generally perform better when each consideration is handled by a separate LLM call, allowing focused attention on each specific aspect.
 
-Examples where parallelization is useful:
+Examples where parallelisation is useful:
 
 **Sectioning:**
 
