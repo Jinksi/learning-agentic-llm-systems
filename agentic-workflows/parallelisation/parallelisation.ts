@@ -38,10 +38,13 @@ export const checkProductAgainstCriteria = async (
           'You will be given a product and a specific criteria. ' +
           'You will need to check the product against the criteria and return a boolean value. ' +
           'You will also need to provide a reason for your answer. ' +
-          'The criteria is: ' +
+          '<criteria>' +
           criteria.label +
+          '</criteria>' +
           'The examples of products in violation of this criteria are: ' +
-          criteria.examples,
+          '<examples>' +
+          criteria.examples +
+          '</examples>',
       },
       {
         role: 'user',
