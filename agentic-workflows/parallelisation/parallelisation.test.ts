@@ -12,7 +12,10 @@ const lmstudio = createOpenAICompatible({
 
 // gpt-4o-mini is much more appropriate for parallelisation. Local models can only respond to one request at a time.
 const models = {
-  gpt4oMini: openai('gpt-4o-mini'),
+  gpt4oMini: openai('gpt-4o-mini', {
+    logprobs: true,
+    structuredOutputs: true,
+  }),
   local: lmstudio('qwen2.5-7b-instruct'),
 }
 
@@ -76,6 +79,7 @@ test.each(Object.keys(testProducts))(
       results.map((result) => ({
         criteria: result.criteria.key,
         violates_criteria: result.result.violates_criteria,
+        confidence: result.confidence?.toFixed(2),
         reason: result.result.reason,
       }))
     )

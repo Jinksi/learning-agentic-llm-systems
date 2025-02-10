@@ -16,6 +16,7 @@ const schema = z.object({
 
 export interface CheckProductAgainstCriteriaResult {
   result: z.infer<typeof schema>
+  confidence: number
   criteria: Criteria
   productDescription: string
   modelId: string
@@ -27,9 +28,10 @@ export const checkProductAgainstCriteria = async (
   productDescription: string,
   model: LanguageModel
 ): Promise<CheckProductAgainstCriteriaResult> => {
-  const { object, response } = await generateObject({
+  const { object, response, logprobs } = await generateObject({
     model,
     schema,
+    temperature: 0,
     messages: [
       {
         role: 'system',
@@ -56,10 +58,21 @@ export const checkProductAgainstCriteria = async (
     maxRetries: 0, // skip default network retries, since this is local
   })
 
+  // Find the logprob for the "true" or "false" value token.
+  const trueOrFalseLogprob = logprobs?.find(
+    (item) => item.token === String(object.violates_criteria)
+  )
+
+  // Calculate the confidence as the exponential of the logprob to get the probability.
+  const confidence = trueOrFalseLogprob
+    ? Math.exp(trueOrFalseLogprob.logprob)
+    : 0
+
   return {
     modelId: response.modelId,
     timestamp: response.timestamp.toISOString(),
     result: object,
+    confidence,
     criteria,
     productDescription,
   }
