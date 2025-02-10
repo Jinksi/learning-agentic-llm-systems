@@ -1,14 +1,20 @@
 import { createOpenAICompatible } from '@ai-sdk/openai-compatible'
 import { embedMany, embed, cosineSimilarity } from 'ai'
+import { createOllama } from 'ollama-ai-provider'
+
+const ollama = createOllama({
+  baseURL: 'http://localhost:11434/api',
+})
 
 const lmstudio = createOpenAICompatible({
   name: 'lmstudio',
   baseURL: 'http://localhost:1234/v1',
 })
 
-const model = lmstudio.textEmbeddingModel(
-  'text-embedding-nomic-embed-text-v1.5' // Providing a model name will auto-load the model
-)
+// const model = lmstudio.textEmbeddingModel(
+//   'text-embedding-nomic-embed-text-v1.5' // Providing a model name will auto-load the model
+// )
+const model = ollama.textEmbeddingModel('nomic-embed-text')
 
 const values = ['Mars', 'Pineapple', 'Eucalyptus', 'Opinion']
 

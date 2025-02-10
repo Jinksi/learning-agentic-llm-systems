@@ -1,15 +1,14 @@
-import { createOpenAICompatible } from '@ai-sdk/openai-compatible'
 import { anthropic } from '@ai-sdk/anthropic'
 import { generateText, tool } from 'ai'
 import { optional, z } from 'zod'
 import cows from 'cows'
+import { createOllama } from 'ollama-ai-provider'
 
-const lmstudio = createOpenAICompatible({
-  name: 'lmstudio',
-  baseURL: 'http://localhost:1234/v1',
+const ollama = createOllama({
+  baseURL: 'http://localhost:11434/api',
 })
 
-const model = lmstudio('')
+const model = ollama('qwen2.5:7b-instruct-q4_K_M')
 // const model = anthropic('claude-3-5-haiku-latest')
 
 const getAsciiArtTool = tool({

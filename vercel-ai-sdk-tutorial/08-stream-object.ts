@@ -1,15 +1,16 @@
-import { createOpenAICompatible } from '@ai-sdk/openai-compatible'
+import { createOllama } from 'ollama-ai-provider'
 import { anthropic } from '@ai-sdk/anthropic'
 import { streamObject } from 'ai'
 import { z } from 'zod'
 
-const lmstudio = createOpenAICompatible({
-  name: 'lmstudio',
-  baseURL: 'http://localhost:1234/v1',
+const ollama = createOllama({
+  baseURL: 'http://localhost:11434/api',
 })
 
 // Empty string defaults to the model selected in lmstudio
-const model = lmstudio('')
+const model = ollama('llama3.2', {
+  structuredOutputs: true,
+})
 // const model = anthropic('claude-3-5-sonnet-latest')
 
 const schema = z.object({

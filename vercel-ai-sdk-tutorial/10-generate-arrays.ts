@@ -1,15 +1,14 @@
-import { createOpenAICompatible } from '@ai-sdk/openai-compatible'
-import { anthropic } from '@ai-sdk/anthropic'
+import { createOllama } from 'ollama-ai-provider'
 import { generateObject } from 'ai'
 import { z } from 'zod'
 
-const lmstudio = createOpenAICompatible({
-  name: 'lmstudio',
-  baseURL: 'http://localhost:1234/v1',
+const ollama = createOllama({
+  baseURL: 'http://localhost:11434/api',
 })
 
-// Empty string defaults to the model selected in lmstudio
-const model = lmstudio('qwen2.5-7b-instruct') // Providing a model name will auto-load the model
+const model = ollama('llama3.2', {
+  structuredOutputs: true,
+})
 // const model = anthropic('claude-3-5-haiku-latest')
 
 const schema = z.object({
@@ -26,6 +25,7 @@ export const createFakeUsers = async (prompt: string) => {
     output: 'array', // array output
     schema,
     system: `You are generating fake user data.`,
+    temperature: 0.9,
   })
 
   return result.object
