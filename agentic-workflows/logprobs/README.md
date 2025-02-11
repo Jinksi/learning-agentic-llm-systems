@@ -11,6 +11,8 @@ When working with AI-powered classification, knowing _why_ a model makes a decis
 
 In this post, we’ll explore how to use [logprobs from the OpenAI API](https://platform.openai.com/docs/api-reference/chat/create) to measure model confidence of classification.
 
+> **Note:** Logprobs availability varies by model and API access level. Some models may not support logprobs, and in some cases, special access may be required. Check the OpenAI documentation for your specific model's capabilities.
+
 ### Why Use Logprobs?
 
 A classifier that determines whether a food item contains pineapple might make obvious decisions in some cases but struggle with others.
