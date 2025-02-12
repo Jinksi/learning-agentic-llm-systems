@@ -1,18 +1,16 @@
 import { openai } from '@ai-sdk/openai'
 import { generateText } from 'ai'
 
-const model = openai('gpt-4o-mini', { logprobs: 10 })
+const model = openai('gpt-4o', { logprobs: 10 })
 
-const result = await generateText({
+const lowTempResult = await generateText({
   model,
   temperature: 0, // Greedy sampling, only the top token is sampled
   prompt:
     'Finish this sentence. Only respond with the next word: My favourite colour is...',
 })
 
-const { logprobs } = result
-
-console.dir(logprobs, { depth: null })
+console.dir(lowTempResult.logprobs, { depth: null })
 
 /**
 Example output:
@@ -52,3 +50,12 @@ Example output:
 ]
 
 */
+
+const highTempResult = await generateText({
+  model,
+  temperature: 1, // Very random sampling.
+  prompt:
+    'Finish this sentence. Only respond with the next word: My favourite colour is...',
+})
+
+console.dir(highTempResult.logprobs, { depth: null })
