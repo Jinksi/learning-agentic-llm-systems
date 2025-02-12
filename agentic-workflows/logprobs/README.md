@@ -1,9 +1,9 @@
 # Estimating LLM classification confidence with log probabilities (logprobs)
 
 - To run the examples (requires `.env` file with OpenAI API key)
+  - Basic: `npm run logprobs:basic`
   - Binary classification: `npm run logprobs:binary`
   - Multi-class classification: `npm run logprobs:multi`
-  - Both: `npm run logprobs`
 - See this post on my blog here: https://ericjinks.com/blog/2025/logprobs/
 
 When working with AI-powered classification, knowing _why_ a model makes a decision can be just as useful as the decision itself.

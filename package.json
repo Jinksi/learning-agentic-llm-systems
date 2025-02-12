@@ -18,7 +18,7 @@
     "13": "tsx --env-file=.env vercel-ai-sdk-tutorial/13*",
     "14": "tsx --env-file=.env vercel-ai-sdk-tutorial/14*",
     "15": "tsx --env-file=.env vercel-ai-sdk-tutorial/15*",
-    "logprobs": "npm run logprobs:binary && npm run logprobs:multi",
+    "logprobs:basic": "tsx --env-file=.env agentic-workflows/logprobs/logprobs-basic.ts",
     "logprobs:binary": "tsx --env-file=.env agentic-workflows/logprobs/binary-classification-logprobs.ts",
     "logprobs:multi": "tsx --env-file=.env agentic-workflows/logprobs/multi-class-classification-logprobs.ts",
     "eval": "evalite",
